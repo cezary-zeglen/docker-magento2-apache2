@@ -9,10 +9,11 @@ Basic docker configuration for Magneto 2
 
 ### Additional:
 - to get into the containers and run your commands use `$ docker exec -it <containername> /bin/bash`
-- If you want to access the site from http://magento.local/ url don't forget to update hosts file on your machine.
+- If you want to access the site from `http://magento.local/` url don't forget to update hosts file on your machine
 - I assume here that files in the magento folder are owned by www-data group
 
 ### Structure:
+```
 $ tree -L 1
 .
 ├── db/                    //database will be saved in this folder so changes will persist
@@ -21,3 +22,4 @@ $ tree -L 1
 ├── magento/               //put your magento 2 project here
 ├── magento.local.conf
 └── README.md
+```
