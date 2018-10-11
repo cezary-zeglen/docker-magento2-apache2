@@ -11,6 +11,12 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
+COPY php.ini /tmp/php.ini
+RUN cat /tmp/php.ini >> /usr/local/etc/php/php.ini
+
 COPY magento.local.conf /etc/apache2/sites-available/
 
 RUN a2ensite magento.local.conf
