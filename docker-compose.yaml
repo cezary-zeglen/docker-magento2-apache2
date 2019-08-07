@@ -18,3 +18,6 @@ services:
       - "./magento:/var/www/html"
     ports:
       - "80:80"
+    environment:
+      - XDEBUG_CONFIG=${XDEBUG_CONFIG}
+      - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
