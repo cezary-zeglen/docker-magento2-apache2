@@ -13,8 +13,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y \
         git \
         nano \
-	iproute2 \
-	composer
+	    iproute2
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
@@ -22,6 +21,7 @@ RUN docker-php-ext-enable xdebug
 COPY php.ini /tmp/php.ini
 RUN cat /tmp/php.ini >> /usr/local/etc/php/php.ini
 
+COPY ports.conf /etc/apache2/ports.conf
 COPY magento.local.conf /etc/apache2/sites-available/
 
 RUN a2ensite magento.local.conf

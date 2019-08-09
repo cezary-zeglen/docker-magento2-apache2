@@ -13,11 +13,20 @@ services:
   app:
     depends_on:
       - db
-    build: .
+    build:
+      context: "."
+      dockerfile: "Dockerfile.app"
     volumes:
       - "./magento:/var/www/html"
     ports:
-      - "80:80"
+      - "8080:8080"
     environment:
       - XDEBUG_CONFIG=${XDEBUG_CONFIG}
       - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
+
+  varnish:
+    build:
+      context: "."
+      dockerfile: "Dockerfile.varnish"
+    ports:
+      - "80:80"
